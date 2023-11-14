@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1ajsrhcdkolt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ox6jg"]
+font_size = 70
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 545.0
+offset_right = 293.0
+offset_bottom = 644.0
+text = "aaaaaaa"
+label_settings = SubResource("LabelSettings_ox6jg")

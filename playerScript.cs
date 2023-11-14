@@ -15,6 +15,9 @@ public partial class playerScript : CharacterBody3D
 	private Vector3 velocity = Vector3.Zero;
 	public float scaleValue = 1f;
 	public Node2D scaleRod;
+	public int maxHealth = 100;
+	public int currentHealth = 100;
+	public Label healthDisplay;
 	
 	public override void _Ready()
 	{
@@ -22,6 +25,7 @@ public partial class playerScript : CharacterBody3D
 		cam = GetNode<Camera3D>("Head/Camera3D"); 
 		scaleRod = GetNode<Node2D>("Head/Node2D/Gitjam-scaletop");
 		GD.Print(scaleRod);
+		healthDisplay = GetNode<Label>("Head/Control/Label");
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -44,7 +48,7 @@ public partial class playerScript : CharacterBody3D
 		{
 			scaleRod.Rotation = (scaleValue - 1) / 4;
 		}
-		
+		healthDisplay.Text = maxHealth+"/"+currentHealth;
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -81,7 +85,7 @@ public partial class playerScript : CharacterBody3D
 		
 		if(IsOnFloor() && Input.IsActionPressed("jump"))
 		{
-			velocity.Y = jumpForce;
+			velocity.Y = jumpForce * scaleValue;
 			scaleValue += 0.005f; 
 		}
 		
