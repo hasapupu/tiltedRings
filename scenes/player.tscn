@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=5 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
+[ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ol58u"]
 
@@ -21,3 +22,7 @@ shape = SubResource("ConvexPolygonShape3D_c2d21")
 [node name="Head" type="Node3D" parent="CharacterBody3D"]
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
+
+[node name="Node2D" parent="CharacterBody3D/Head" instance=ExtResource("2_d3q2v")]
+position = Vector2(216, 415)
+scale = Vector2(0.3, 0.3)

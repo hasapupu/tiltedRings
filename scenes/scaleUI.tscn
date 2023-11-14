@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcidmvusah8uf"]
+
+[ext_resource type="Texture2D" uid="uid://4dfivom32g2n" path="res://graphics/gitjam-scaletop.png" id="1_6fcsn"]
+[ext_resource type="Texture2D" uid="uid://bdg7164fmkaif" path="res://graphics/gitjam-scalemid.png" id="2_jpdj2"]
+[ext_resource type="Texture2D" uid="uid://dk1dgn3i6mejc" path="res://graphics/gitjam-scale.png" id="3_ue5qx"]
+[ext_resource type="Script" path="res://ring.cs" id="4_ffpim"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Gitjam-scalemid" type="Sprite2D" parent="."]
+position = Vector2(-3, 144)
+texture = ExtResource("2_jpdj2")
+
+[node name="Gitjam-scaletop" type="Sprite2D" parent="."]
+texture = ExtResource("1_6fcsn")
+
+[node name="Gitjam-scale" type="Sprite2D" parent="Gitjam-scaletop"]
+position = Vector2(126, 108)
+texture = ExtResource("3_ue5qx")
+script = ExtResource("4_ffpim")
+
+[node name="Gitjam-scale2" type="Sprite2D" parent="Gitjam-scaletop"]
+position = Vector2(-132, 108)
+texture = ExtResource("3_ue5qx")
+script = ExtResource("4_ffpim")

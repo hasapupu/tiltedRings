@@ -1,6 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dbtb8upi3u4ln"]
-
-[ext_resource type="PackedScene" uid="uid://dufrd1x67bvfh" path="res://player.tscn" id="1_q5aii"]
+[gd_scene load_steps=8 format=3 uid="uid://dbtb8upi3u4ln"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_57ag4"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -29,6 +27,7 @@ data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+light_color = Color(1, 1, 0.141176, 1)
 shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -43,6 +42,3 @@ surface_material_override/0 = SubResource("StandardMaterial3D_puwx0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_wmdha")
-
-[node name="player" parent="." instance=ExtResource("1_q5aii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.193, 0)
