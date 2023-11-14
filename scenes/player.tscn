@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
-[ext_resource type="PackedScene" uid="uid://d1ajsrhcdkolt" path="res://health.tscn" id="3_qa6cy"]
+[ext_resource type="PackedScene" uid="uid://d1ajsrhcdkolt" path="res://scenes/health.tscn" id="3_qa6cy"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ol58u"]
 

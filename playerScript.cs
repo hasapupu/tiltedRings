@@ -53,7 +53,7 @@ public partial class playerScript : CharacterBody3D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		GD.Print(scaleValue);
+		//GD.Print(scaleValue);
 		if(scaleValue > 1)
 		{
 			scaleValue -= 0.001f;
