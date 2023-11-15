@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=12 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
@@ -11,7 +11,144 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_c2d21"]
 points = PackedVector3Array(-0.125207, -0.532801, -0.480507, 0.0227831, 0.47607, 0.498884, 0.169713, 0.559144, 0.464172, 0.231051, -0.803591, 0.320455, 0.40741, 0.651043, -0.243523, -0.482789, 0.594843, 0.0822132, -0.362868, -0.682312, 0.289697, 0.469044, -0.654529, -0.0662713, -0.127444, 0.842701, -0.338103, -0.393435, -0.683942, -0.244717, 0.438255, 0.623309, 0.200849, 0.0841477, 0.977454, 0.114795, -0.0682023, -0.976458, -0.12927, 0.20055, -0.563129, -0.451454, -0.185527, 0.595453, -0.453475, -0.273363, 0.592268, 0.407754, -0.00693649, -0.476823, 0.49966, 0.375821, -0.588614, 0.316955, 0.111579, 0.563059, -0.481177, -0.41725, 0.527866, -0.270497, -0.484546, -0.596972, -0.0665097, -0.279747, 0.908561, 0.0533361, -0.250197, -0.880712, 0.205319, 0.263647, -0.902771, -0.127394, 0.293368, 0.871526, -0.157196, 0.373412, -0.526319, -0.328246, 0.499663, 0.476641, -0.00688856, 0.0531056, 0.875001, 0.324703, -0.154543, -0.590854, 0.465879, -0.0972799, -0.782358, -0.398188, -0.387649, -0.498171, 0.31565, -0.30068, -0.587995, -0.388901)
 
-[node name="player" type="Node3D"]
+[sub_resource type="Animation" id="Animation_i5hu3"]
+resource_name = "LS_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D/Longsword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.290524, -0.538258, -0.901393)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D/Longsword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0372199, 0.620963, 0.0519703)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/Node3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_dpfw0"]
+resource_name = "LS_swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D/Longsword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.871278, -0.538258, -0.900322)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D/Longsword:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.584729, 0.225474, -1.17696)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/Node3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.5708, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/Node3D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0115286, 4.76837e-07, 0.000725269)]
+}
+
+[sub_resource type="Animation" id="Animation_l1x4o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.27529, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D/Longsword:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.871278, -0.538258, -0.900322)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/Node3D/Longsword:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.584729, 0.225474, -1.17696)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db8l3"]
+_data = {
+"LS_idle": SubResource("Animation_i5hu3"),
+"LS_swing": SubResource("Animation_dpfw0"),
+"RESET": SubResource("Animation_l1x4o")
+}
+
+[node name="player" type="Node3D" groups=["player"]]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 script = ExtResource("1_jjhhm")
@@ -27,8 +164,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561365, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D/Head"]
 
-[node name="Longsword" parent="CharacterBody3D/Head/Camera3D" instance=ExtResource("4_xj72g")]
-transform = Transform3D(0.0812755, 0, 0.0582605, 0, 0.1, 0, -0.0582605, 0, 0.0812755, 0.644142, -0.538258, -0.900322)
+[node name="Node3D" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+transform = Transform3D(0.291224, 0, 0.956655, 0, 1, 0, -0.956655, 0, 0.291224, 0.0115286, 4.76837e-07, 0.000725269)
+
+[node name="Longsword" parent="CharacterBody3D/Head/Camera3D/Node3D" instance=ExtResource("4_xj72g")]
+transform = Transform3D(0.0260064, 0.0947423, 0.0186425, -0.0770024, 0.0319981, -0.0551974, -0.0582605, -3.23355e-07, 0.0812755, 0.871278, -0.538258, -0.900322)
 script = ExtResource("3_of7w1")
 
 [node name="Node2D" parent="CharacterBody3D/Head" instance=ExtResource("2_d3q2v")]
@@ -36,3 +176,13 @@ position = Vector2(140, 417)
 scale = Vector2(0.3, 0.3)
 
 [node name="Control" parent="CharacterBody3D/Head" instance=ExtResource("3_qa6cy")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody3D/Head"]
+root_node = NodePath("../..")
+autoplay = "LS_idle"
+playback_default_blend_time = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_db8l3")
+}
+
+[connection signal="animation_finished" from="CharacterBody3D/Head/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]

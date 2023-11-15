@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceakq3prwkan8"]
+[gd_scene load_steps=12 format=3 uid="uid://ceakq3prwkan8"]
+
+[ext_resource type="Script" path="res://scenes/LS_hitbox.cs" id="1_ixabc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_us2s6"]
 resource_name = "Material"
@@ -38,6 +40,9 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_7ov60")
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_twqpq"]
+points = PackedVector3Array(-0.492121, 0.861457, -2.07287, 0.513109, 1.87023, 1.94845, 0.261432, 32.0197, 0.943118, -1.24617, -0.394563, 1.19425, 0.764293, -10.6999, -0.815616, -0.492121, 35.5405, -0.56448, 1.26715, 1.11365, -0.815616, 0.513109, 35.2932, -0.56448, -1.24617, -0.394563, -1.06754, 1.26715, 1.11365, 0.943118, -0.743305, -10.6999, 0.691589, 0.513109, 0.861457, -2.07287, 0.764293, -10.6999, 0.691589, -0.743305, 0.614209, 1.94845, -0.492121, 36.8014, 0.440454, -0.743305, -10.6999, -0.815616, 0.513109, 36.8014, 0.440454, 0.764293, 1.11365, 1.94845, 0.261432, 34.0323, -0.815616, 1.01572, 1.11365, -1.56981, 0.261432, 39.3135, -0.312952, -0.994736, 1.11365, -1.56981, -1.24617, 1.11365, -1.06754, -0.492121, 33.5328, 0.691589, -1.24617, 1.11365, 1.19425, -0.492121, 31.5202, -0.815616, -0.492121, 37.5531, 0.188925, 0.261432, 39.8179, 0.188925, 0.513109, 31.268, -0.815616, 0.513109, 0.362016, 1.94845, 0.513109, 33.2806, 0.691589, 0.513109, 37.3009, 0.188925)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dsjoc"]
 
@@ -110,6 +115,13 @@ transform = Transform3D(0.502917, 0, 0, 0, 0.382508, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_7p3ug")
 skeleton = NodePath("")
 
+[node name="hitbox" type="Area3D" parent="Cube"]
+monitoring = false
+script = ExtResource("1_ixabc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cube/hitbox"]
+shape = SubResource("ConvexPolygonShape3D_twqpq")
+
 [node name="Sphere" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.414619, 0, 0, 0, 0.414619, 0, 0, 0, 0.414619, 0.0200765, 0, 0)
 mesh = SubResource("ArrayMesh_uxbk8")
@@ -119,3 +131,5 @@ skeleton = NodePath("")
 transform = Transform3D(0.196002, 0, 0, 0, 0.196002, 0, 0, 0, 0.196002, 0.0200765, -4.19602, 0)
 mesh = SubResource("ArrayMesh_phtwc")
 skeleton = NodePath("")
+
+[connection signal="area_entered" from="Cube/hitbox" to="Cube/hitbox" method="_on_area_entered"]

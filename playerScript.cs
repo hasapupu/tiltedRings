@@ -21,6 +21,8 @@ public partial class playerScript : CharacterBody3D
 	public Label healthDisplay;
 	public weaponState state = weaponState.NONE;
 	public List<Node3D> weapons = new List<Node3D>();
+	AnimationPlayer animPlayer;
+	Area3D hitBox;
 	
 	public override void _Ready()
 	{
@@ -28,8 +30,10 @@ public partial class playerScript : CharacterBody3D
 		cam = GetNode<Camera3D>("Head/Camera3D"); 
 		scaleRod = GetNode<Node2D>("Head/Node2D/Gitjam-scaletop");
 		GD.Print(scaleRod);
+		hitBox = GetNode<Area3D>("Head/Camera3D/Node3D/Longsword/Cube/hitbox");
 		healthDisplay = GetNode<Label>("Head/Control/Label");
-		weapons.Add(GetNode<Node3D>("Head/Camera3D/Longsword"));
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D/Longsword"));
+		animPlayer = GetNode<AnimationPlayer>("Head/AnimationPlayer");
 		setWeaponState(weaponState.NONE);
 	}
 	
@@ -90,6 +94,14 @@ public partial class playerScript : CharacterBody3D
 			scaleRod.Rotation = (scaleValue - 1) / 4;
 		}
 		healthDisplay.Text = maxHealth+"/"+currentHealth;
+		//will have to change based on weapon and cd
+		if(Input.IsActionJustPressed("attack"))
+		{
+			GD.Print("attack");
+			animPlayer.Play("LS_swing");
+			hitBox.Monitoring = true;
+			scaleValue -= (float)((scaleValue / 100) * 15); 
+		}
 	}
 	
 	public override void _PhysicsProcess(double delta)
@@ -133,4 +145,17 @@ public partial class playerScript : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	
+	void _on_animation_player_animation_finished(StringName anim_name)
+	{	
+		// Replace with function body.
+		if((string)anim_name == "LS_swing")
+		{	
+			animPlayer.Play("LS_idle");
+			hitBox.Monitoring = true;
+		}
+	}
 }
+
+
+
