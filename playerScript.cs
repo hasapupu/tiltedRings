@@ -1,8 +1,9 @@
 using Godot;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 
-//public enum weaponState
+public enum weaponState {NONE, LONGSWORD}
 public partial class playerScript : CharacterBody3D
 {
 	public float speed = 8f;
@@ -18,6 +19,8 @@ public partial class playerScript : CharacterBody3D
 	public int maxHealth = 100;
 	public int currentHealth = 100;
 	public Label healthDisplay;
+	public weaponState state = weaponState.NONE;
+	public List<Node3D> weapons = new List<Node3D>();
 	
 	public override void _Ready()
 	{
@@ -26,6 +29,8 @@ public partial class playerScript : CharacterBody3D
 		scaleRod = GetNode<Node2D>("Head/Node2D/Gitjam-scaletop");
 		GD.Print(scaleRod);
 		healthDisplay = GetNode<Label>("Head/Control/Label");
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Longsword"));
+		setWeaponState(weaponState.NONE);
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -42,8 +47,44 @@ public partial class playerScript : CharacterBody3D
 		}
 	}
 	
+	public void setWeaponState(weaponState updatedState)
+	{
+		
+		state = updatedState;
+		switch(updatedState)
+		{
+			default:
+				foreach(Node3D weapon in weapons)
+				{
+					weapon.ProcessMode = ProcessModeEnum.Disabled;
+					weapon.Hide();
+				}
+				break;
+				
+			case weaponState.LONGSWORD:
+				foreach(Node3D weapon in weapons)
+				{
+					if(weapon is Longsword)
+					{
+						GD.Print("mogus");
+						weapon.ProcessMode = ProcessModeEnum.Inherit;
+						weapon.Show();	
+						
+					}
+					else
+					{
+						weapon.ProcessMode = ProcessModeEnum.Disabled;
+						weapon.Hide();
+					}
+				}
+				break;
+		}
+		
+	}
+	
 	public override void _Process(double delta)
 	{
+		//setWeaponState(state);
 		if(scaleValue < 2)
 		{
 			scaleRod.Rotation = (scaleValue - 1) / 4;
