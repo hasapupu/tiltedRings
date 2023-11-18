@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvsq27082qnc5"]
+[gd_scene load_steps=6 format=3 uid="uid://dvsq27082qnc5"]
 
 [ext_resource type="PackedScene" uid="uid://dbtb8upi3u4ln" path="res://scenes/map.tscn" id="1_3ud17"]
 [ext_resource type="PackedScene" uid="uid://dufrd1x67bvfh" path="res://scenes/player.tscn" id="2_txelx"]
 [ext_resource type="PackedScene" uid="uid://c6h626y4wu1ul" path="res://scenes/demoPickup.tscn" id="3_cefa8"]
 [ext_resource type="PackedScene" uid="uid://c77iatgtftmj6" path="res://scenes/testEnemy.tscn" id="4_hyt2g"]
+[ext_resource type="PackedScene" uid="uid://c08xp6u28g0xg" path="res://scenes/SS_pickUp.tscn" id="5_ebr0q"]
 
 [node name="world" type="Node3D"]
 
@@ -13,11 +14,11 @@ transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 0, 0)
 [node name="player" parent="." instance=ExtResource("2_txelx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16374, 0)
 
-[node name="Node3D" parent="." instance=ExtResource("3_cefa8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
-
 [node name="Node3D2" parent="." instance=ExtResource("3_cefa8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1557, 0)
 
 [node name="enemy" parent="." instance=ExtResource("4_hyt2g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0232, 0.801159, 0)
+
+[node name="Node3D" parent="." instance=ExtResource("5_ebr0q")]
+transform = Transform3D(1, -0.000623922, -0.00052245, 0.000624056, 1, 0.000262812, 0.00052229, -0.00026313, 1, 20.6437, 0, -5.45307)

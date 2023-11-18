@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 
-public enum weaponState {NONE, LONGSWORD}
+public enum weaponState {NONE, LONGSWORD, SHORTSWORD, BOW, CROSSBOW, SCEMITAR}
 public partial class playerScript : CharacterBody3D
 {
 	public float speed = 8f;
@@ -30,9 +30,10 @@ public partial class playerScript : CharacterBody3D
 		cam = GetNode<Camera3D>("Head/Camera3D"); 
 		scaleRod = GetNode<Node2D>("Head/Node2D/Gitjam-scaletop");
 		GD.Print(scaleRod);
-		hitBox = GetNode<Area3D>("Head/Camera3D/Node3D/Longsword/Cube/hitbox");
+		hitBox = GetNode<Area3D>("Head/Camera3D/Node3D/Longsword/Longsword/MeshInstance3D/hitbox");
 		healthDisplay = GetNode<Label>("Head/Control/Label");
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D/Longsword"));
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D2/Shortsword"));
 		animPlayer = GetNode<AnimationPlayer>("Head/AnimationPlayer");
 		setWeaponState(weaponState.NONE);
 	}
@@ -68,7 +69,25 @@ public partial class playerScript : CharacterBody3D
 			case weaponState.LONGSWORD:
 				foreach(Node3D weapon in weapons)
 				{
-					if(weapon is Longsword)
+					if(weapon.IsInGroup("Longsword"))
+					{
+						GD.Print("mogus");
+						weapon.ProcessMode = ProcessModeEnum.Inherit;
+						weapon.Show();	
+						
+					}
+					else
+					{
+						weapon.ProcessMode = ProcessModeEnum.Disabled;
+						weapon.Hide();
+					}
+				}
+				break;
+			
+			case weaponState.SHORTSWORD:
+				foreach(Node3D weapon in weapons)
+				{
+					if(weapon.IsInGroup("Shortsword"))
 					{
 						GD.Print("mogus");
 						weapon.ProcessMode = ProcessModeEnum.Inherit;
@@ -83,13 +102,13 @@ public partial class playerScript : CharacterBody3D
 				}
 				break;
 		}
-		
+		GD.Print(state);
 	}
 	
 	public override void _Process(double delta)
 	{
 		//setWeaponState(state);
-		if(scaleValue < 2)
+		if(scaleValue < 3)
 		{
 			scaleRod.Rotation = (scaleValue - 1) / 4;
 		}

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c08xp6u28g0xg"]
+
+[ext_resource type="Script" path="res://SS_pickUp.cs" id="1_f68fo"]
+[ext_resource type="PackedScene" uid="uid://d2ywqwd7go07f" path="res://scenes/Shortsword.tscn" id="2_a7fuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lqyfe"]
+size = Vector3(0.400192, 0.487554, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("1_f68fo")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185295, 0)
+shape = SubResource("BoxShape3D_lqyfe")
+
+[node name="Shortsword" parent="." instance=ExtResource("2_a7fuy")]
+transform = Transform3D(1.91069e-16, 4.37114e-09, 0.1, 0.1, -4.37114e-09, 0, 4.37114e-09, 0.1, -4.37114e-09, 0, 0, 0)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_OnBodyEntered"]

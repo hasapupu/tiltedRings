@@ -11,11 +11,4 @@ public partial class LS_hitbox : Area3D
 			GD.Print("Hit registered");
 		}
 	}
-	
-	public override void _Process(double delta)
-	{
-		//GD.Print("Script active");
-	}
 }
-
-

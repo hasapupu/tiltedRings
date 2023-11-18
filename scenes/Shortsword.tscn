@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2ywqwd7go07f"]
+
+[ext_resource type="PackedScene" uid="uid://di5syugxxtoha" path="res://models/Shortsword.blend" id="1_of154"]
+[ext_resource type="Script" path="res://scenes/LS_hitbox.cs" id="2_u47sg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o8216"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_nh8bc"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="Shortsword" type="Node3D"]
+
+[node name="Shortsword" parent="." instance=ExtResource("1_of154")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Shortsword"]
+transform = Transform3D(0.263611, 0, 0, 0, 10.9343, 0, 0, 0, 0.116535, 0.0604887, 2.61042, 0.0486158)
+mesh = SubResource("BoxMesh_o8216")
+
+[node name="hitbox" type="Area3D" parent="Shortsword/MeshInstance3D"]
+monitoring = false
+script = ExtResource("2_u47sg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shortsword/MeshInstance3D/hitbox"]
+shape = SubResource("ConvexPolygonShape3D_nh8bc")
+
+[connection signal="area_entered" from="Shortsword/MeshInstance3D/hitbox" to="Shortsword/MeshInstance3D/hitbox" method="_on_area_entered"]

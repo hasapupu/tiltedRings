@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=13 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
 [ext_resource type="Script" path="res://scenes/Longsword.cs" id="3_of7w1"]
 [ext_resource type="PackedScene" uid="uid://d1ajsrhcdkolt" path="res://scenes/health.tscn" id="3_qa6cy"]
+[ext_resource type="PackedScene" uid="uid://d2ywqwd7go07f" path="res://scenes/Shortsword.tscn" id="4_0erlj"]
 [ext_resource type="PackedScene" uid="uid://ceakq3prwkan8" path="res://scenes/Longsword.tscn" id="4_xj72g"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ol58u"]
@@ -167,9 +168,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561365, 0)
 [node name="Node3D" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
 transform = Transform3D(0.291224, 0, 0.956655, 0, 1, 0, -0.956655, 0, 0.291224, 0.0115286, 4.76837e-07, 0.000725269)
 
-[node name="Longsword" parent="CharacterBody3D/Head/Camera3D/Node3D" instance=ExtResource("4_xj72g")]
+[node name="Longsword" parent="CharacterBody3D/Head/Camera3D/Node3D" groups=["Longsword"] instance=ExtResource("4_xj72g")]
 transform = Transform3D(0.0260064, 0.0947423, 0.0186425, -0.0770024, 0.0319981, -0.0551974, -0.0582605, -3.23355e-07, 0.0812755, 0.871278, -0.538258, -0.900322)
 script = ExtResource("3_of7w1")
+
+[node name="Node3D2" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+
+[node name="Shortsword" parent="CharacterBody3D/Head/Camera3D/Node3D2" groups=["Shortsword"] instance=ExtResource("4_0erlj")]
+transform = Transform3D(0.0934211, 0, 0.0356722, 0, 0.1, 0, -0.0356722, 0, 0.0934211, 0.455114, -0.332512, -0.971269)
 
 [node name="Node2D" parent="CharacterBody3D/Head" instance=ExtResource("2_d3q2v")]
 position = Vector2(140, 417)
