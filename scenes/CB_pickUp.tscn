@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnhm8344v1gdm"]
+
+[ext_resource type="Script" path="res://CB_pickUp.cs" id="1_i70ek"]
+[ext_resource type="PackedScene" uid="uid://cjdrbrtxumv0n" path="res://scenes/Crossbow.tscn" id="2_fvra5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0vbwc"]
+size = Vector3(0.400192, 0.487554, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.201648)
+script = ExtResource("1_i70ek")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.185295, 0)
+shape = SubResource("BoxShape3D_0vbwc")
+
+[node name="Node3D" parent="." instance=ExtResource("2_fvra5")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, -0.306791)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_OnBodyEntered"]

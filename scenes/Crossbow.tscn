@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjdrbrtxumv0n"]
+
+[ext_resource type="PackedScene" uid="uid://i7u6oeqha4u7" path="res://models/crossbow.blend" id="1_k5jjq"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="crossbow" parent="." instance=ExtResource("1_k5jjq")]

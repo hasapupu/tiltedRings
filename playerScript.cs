@@ -23,6 +23,8 @@ public partial class playerScript : CharacterBody3D
 	public List<Node3D> weapons = new List<Node3D>();
 	AnimationPlayer animPlayer;
 	Area3D hitBox;
+	weaponState prevState = weaponState.NONE;
+	Dictionary<weaponState,string> weaponPickups = new Dictionary<weaponState,string>() {{weaponState.LONGSWORD, "LS"},{weaponState.SHORTSWORD,"SS"},{weaponState.BOW,"BW"},{weaponState.CROSSBOW,"CB"},{weaponState.SCEMITAR, "SC"}};
 	
 	public override void _Ready()
 	{
@@ -34,6 +36,9 @@ public partial class playerScript : CharacterBody3D
 		healthDisplay = GetNode<Label>("Head/Control/Label");
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D/Longsword"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D2/Shortsword"));
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D3/Scemitar"));
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow"));
+		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D5/Bow"));
 		animPlayer = GetNode<AnimationPlayer>("Head/AnimationPlayer");
 		setWeaponState(weaponState.NONE);
 	}
@@ -54,7 +59,7 @@ public partial class playerScript : CharacterBody3D
 	
 	public void setWeaponState(weaponState updatedState)
 	{
-		
+		prevState = state;
 		state = updatedState;
 		switch(updatedState)
 		{
@@ -101,6 +106,65 @@ public partial class playerScript : CharacterBody3D
 					}
 				}
 				break;
+			case weaponState.SCEMITAR:
+				foreach(Node3D weapon in weapons)
+				{
+					if(weapon.IsInGroup("Scemitar"))
+					{
+						GD.Print("mogus");
+						weapon.ProcessMode = ProcessModeEnum.Inherit;
+						weapon.Show();	
+						
+					}
+					else
+					{
+						weapon.ProcessMode = ProcessModeEnum.Disabled;
+						weapon.Hide();
+					}
+				}
+				break;
+			case weaponState.CROSSBOW:
+				foreach(Node3D weapon in weapons)
+				{
+					if(weapon.IsInGroup("Crossbow"))
+					{
+						GD.Print("mogus");
+						weapon.ProcessMode = ProcessModeEnum.Inherit;
+						weapon.Show();	
+						
+					}
+					else
+					{
+						weapon.ProcessMode = ProcessModeEnum.Disabled;
+						weapon.Hide();
+					}
+				}
+				break;
+			case weaponState.BOW:
+				foreach(Node3D weapon in weapons)
+				{
+					if(weapon.IsInGroup("Bow"))
+					{
+						GD.Print("mogus");
+						weapon.ProcessMode = ProcessModeEnum.Inherit;
+						weapon.Show();	
+						
+					}
+					else
+					{
+						weapon.ProcessMode = ProcessModeEnum.Disabled;
+						weapon.Hide();
+					}
+				}
+				break;
+		}
+		if(prevState != weaponState.NONE)
+		{
+			var pickupScene = ResourceLoader.Load<PackedScene>("res://scenes/" + weaponPickups[prevState] + "_pickUp.tscn");
+			Node3D pickupInstance = pickupScene.Instantiate<Node3D>();
+			GetParent().GetParent().AddChild(pickupInstance);
+			pickupInstance.Position = new Vector3(GlobalPosition.X + Math.Abs(head.Rotation.Y),0.1f,GlobalPosition.Z + (head.Rotation.Y));
+			GD.Print(head.Rotation);
 		}
 		GD.Print(state);
 	}

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=16 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://d1ajsrhcdkolt" path="res://scenes/health.tscn" id="3_qa6cy"]
 [ext_resource type="PackedScene" uid="uid://d2ywqwd7go07f" path="res://scenes/Shortsword.tscn" id="4_0erlj"]
 [ext_resource type="PackedScene" uid="uid://ceakq3prwkan8" path="res://scenes/Longsword.tscn" id="4_xj72g"]
+[ext_resource type="PackedScene" uid="uid://dyl521i5hbk26" path="res://scenes/Scemitar.tscn" id="5_1e58m"]
+[ext_resource type="PackedScene" uid="uid://cjdrbrtxumv0n" path="res://scenes/Crossbow.tscn" id="6_yigae"]
+[ext_resource type="PackedScene" uid="uid://dlk3cqqevtfky" path="res://scenes/Bow.tscn" id="7_evqsl"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ol58u"]
 
@@ -176,6 +179,21 @@ script = ExtResource("3_of7w1")
 
 [node name="Shortsword" parent="CharacterBody3D/Head/Camera3D/Node3D2" groups=["Shortsword"] instance=ExtResource("4_0erlj")]
 transform = Transform3D(0.0934211, 0, 0.0356722, 0, 0.1, 0, -0.0356722, 0, 0.0934211, 0.455114, -0.332512, -0.971269)
+
+[node name="Node3D3" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+
+[node name="Scemitar" parent="CharacterBody3D/Head/Camera3D/Node3D3" groups=["Scemitar"] instance=ExtResource("5_1e58m")]
+transform = Transform3D(-0.0930737, 0, -0.0365689, 0, 0.1, 0, 0.0365689, 0, -0.0930737, 0.429223, -0.619489, -0.953769)
+
+[node name="Node3D4" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+
+[node name="Crossbow" parent="CharacterBody3D/Head/Camera3D/Node3D4" groups=["Crossbow"] instance=ExtResource("6_yigae")]
+transform = Transform3D(-2, 3.42933e-08, -2.89282e-07, -5.01911e-08, 1.91583, 0.574119, 2.86951e-07, 0.574119, -1.91583, 0.628381, -0.39206, -0.89279)
+
+[node name="Node3D5" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
+
+[node name="Bow" parent="CharacterBody3D/Head/Camera3D/Node3D5" groups=["Bow"] instance=ExtResource("7_evqsl")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.613181, 0, -1.14702)
 
 [node name="Node2D" parent="CharacterBody3D/Head" instance=ExtResource("2_d3q2v")]
 position = Vector2(140, 417)

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dyl521i5hbk26"]
+
+[ext_resource type="PackedScene" uid="uid://f0fkcvvnmtei" path="res://models/other_sword.blend" id="1_g3d5e"]
+[ext_resource type="Script" path="res://scenes/LS_hitbox.cs" id="2_awuqq"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_u761g"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tbkfd"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="Scemitar" type="Node3D"]
+
+[node name="Scemitar" parent="." instance=ExtResource("1_g3d5e")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Scemitar"]
+transform = Transform3D(1.4614, 0, 0, 0, 19.181, 0, 0, 0, 3.85174, 0, 5.94316, 0)
+visible = false
+mesh = SubResource("BoxMesh_u761g")
+
+[node name="hitbox" type="Area3D" parent="Scemitar/MeshInstance3D"]
+monitoring = false
+script = ExtResource("2_awuqq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Scemitar/MeshInstance3D/hitbox"]
+shape = SubResource("ConvexPolygonShape3D_tbkfd")
+
+[connection signal="area_entered" from="Scemitar/MeshInstance3D/hitbox" to="Scemitar/MeshInstance3D/hitbox" method="_on_area_entered"]
