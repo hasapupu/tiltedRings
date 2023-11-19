@@ -23,6 +23,8 @@ public partial class playerScript : CharacterBody3D
 	public List<Node3D> weapons = new List<Node3D>();
 	AnimationPlayer animPlayer;
 	Area3D hitBox;
+	Area3D SS_hitBox;
+	Area3D SC_hitBox;
 	weaponState prevState = weaponState.NONE;
 	Dictionary<weaponState,string> weaponPickups = new Dictionary<weaponState,string>() {{weaponState.LONGSWORD, "LS"},{weaponState.SHORTSWORD,"SS"},{weaponState.BOW,"BW"},{weaponState.CROSSBOW,"CB"},{weaponState.SCEMITAR, "SC"}};
 	
@@ -33,6 +35,8 @@ public partial class playerScript : CharacterBody3D
 		scaleRod = GetNode<Node2D>("Head/Node2D/Gitjam-scaletop");
 		GD.Print(scaleRod);
 		hitBox = GetNode<Area3D>("Head/Camera3D/Node3D/Longsword/Longsword/MeshInstance3D/hitbox");
+		SS_hitBox = GetNode<Area3D>("Head/Camera3D/Node3D2/Shortsword/Shortsword/MeshInstance3D/hitbox");
+		SC_hitBox = GetNode<Area3D>("Head/Camera3D/Node3D3/Scemitar/Scemitar/MeshInstance3D/hitbox");
 		healthDisplay = GetNode<Label>("Head/Control/Label");
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D/Longsword"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D2/Shortsword"));
@@ -87,6 +91,7 @@ public partial class playerScript : CharacterBody3D
 						weapon.Hide();
 					}
 				}
+				animPlayer.Play("LS_idle");
 				break;
 			
 			case weaponState.SHORTSWORD:
@@ -105,6 +110,7 @@ public partial class playerScript : CharacterBody3D
 						weapon.Hide();
 					}
 				}
+				animPlayer.Play("SS_idle");
 				break;
 			case weaponState.SCEMITAR:
 				foreach(Node3D weapon in weapons)
@@ -122,6 +128,7 @@ public partial class playerScript : CharacterBody3D
 						weapon.Hide();
 					}
 				}
+				animPlayer.Play("SC_idle");
 				break;
 			case weaponState.CROSSBOW:
 				foreach(Node3D weapon in weapons)
@@ -181,9 +188,26 @@ public partial class playerScript : CharacterBody3D
 		if(Input.IsActionJustPressed("attack"))
 		{
 			GD.Print("attack");
-			animPlayer.Play("LS_swing");
-			hitBox.Monitoring = true;
-			scaleValue -= (float)((scaleValue / 100) * 15); 
+			switch(state)
+			{
+				case weaponState.LONGSWORD:
+					animPlayer.Play("LS_swing");
+					hitBox.Monitoring = true;
+					scaleValue -= (float)((scaleValue / 100) * 15); 
+					break;
+				
+				case weaponState.SHORTSWORD:
+					animPlayer.Play("SC_swing");
+					SS_hitBox.Monitoring = true;
+					scaleValue -= (float)((scaleValue / 100) * 5); 
+					break;
+					
+				case weaponState.SCEMITAR:
+					animPlayer.Play("SS_swing");
+					SC_hitBox.Monitoring = true;
+					scaleValue -= (float)((scaleValue / 100) * 10); 
+					break;
+			}
 		}
 	}
 	
@@ -235,7 +259,17 @@ public partial class playerScript : CharacterBody3D
 		if((string)anim_name == "LS_swing")
 		{	
 			animPlayer.Play("LS_idle");
-			hitBox.Monitoring = true;
+			hitBox.Monitoring = false;
+		}
+		else if((string)anim_name == "SC_swing")
+		{	
+			animPlayer.Play("SS_idle");
+			SS_hitBox.Monitoring = false;
+		}
+		else if((string)anim_name == "SS_swing")
+		{	
+			animPlayer.Play("SC_idle");
+			SC_hitBox.Monitoring = false;
 		}
 	}
 }
