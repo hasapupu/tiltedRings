@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=24 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
@@ -216,96 +216,41 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_qkabg"]
-resource_name = "SS_swing"
-length = 0.3
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/Node3D3/Scemitar:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Head/Camera3D/Node3D5/Bow:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.365441, -3.05841, 1.3416)]
+"values": [Vector3(0.05, 0.05, 0.05)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/Node3D3/Scemitar:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Head/Camera3D/Node3D4/Crossbow:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.429223, -0.619489, -0.953769)]
+"values": [Vector3(0.628381, -0.39206, -0.709721)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/Node3D3:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(-2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.16607, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_bt7pb"]
-resource_name = "SS_idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Head/Camera3D/Node3D2/Shortsword:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Head/Camera3D/Node3D4/Crossbow:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.455114, -0.332512, -0.971269)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Head/Camera3D/Node3D2/Shortsword:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.1, 0.1, 0.1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Head/Camera3D/Node3D2:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Head/Camera3D/Node3D2/Shortsword:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0614554, 0.359771, 0.161853)]
+"values": [Vector3(-0.534332, -3.14159, -6.84448e-08)]
 }
 
 [sub_resource type="Animation" id="Animation_xn3ml"]
@@ -387,8 +332,189 @@ tracks/2/keys = {
 "values": [Vector3(0.455114, -0.332512, -0.971269)]
 }
 
+[sub_resource type="Animation" id="Animation_bt7pb"]
+resource_name = "SS_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D2/Shortsword:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.455114, -0.332512, -0.971269)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D2/Shortsword:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/Node3D2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/Node3D2/Shortsword:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0614554, 0.359771, 0.161853)]
+}
+
+[sub_resource type="Animation" id="Animation_qkabg"]
+resource_name = "SS_swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D3/Scemitar:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.365441, -3.05841, 1.3416)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D3/Scemitar:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.429223, -0.619489, -0.953769)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/Node3D3:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.16607, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_unrwe"]
+resource_name = "BW_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D5/Bow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.05, 0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_gjckj"]
+resource_name = "CB_idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D4/Crossbow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.628381, -0.39206, -0.89279)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D4/Crossbow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.291155, -3.14159, -2.61982e-08)]
+}
+
+[sub_resource type="Animation" id="Animation_0p1ew"]
+resource_name = "BW_shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D5/Bow:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.05, 0.05, 0.113891), Vector3(0.05, 0.05, 0.05)]
+}
+
+[sub_resource type="Animation" id="Animation_1b5t7"]
+resource_name = "CB_shoot"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Node3D4/Crossbow:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(0.628381, -0.39206, -0.89279), Vector3(0.628381, -0.39206, -0.709721)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head/Camera3D/Node3D4/Crossbow:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector3(-0.291155, -3.14159, -2.61982e-08), Vector3(-0.534332, -3.14159, -6.84448e-08)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db8l3"]
 _data = {
+"BW_idle": SubResource("Animation_unrwe"),
+"BW_shoot": SubResource("Animation_0p1ew"),
+"CB_idle": SubResource("Animation_gjckj"),
+"CB_shoot": SubResource("Animation_1b5t7"),
 "LS_idle": SubResource("Animation_i5hu3"),
 "LS_swing": SubResource("Animation_dpfw0"),
 "RESET": SubResource("Animation_l1x4o"),
@@ -424,10 +550,9 @@ script = ExtResource("3_of7w1")
 [node name="Node3D2" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
 
 [node name="Shortsword" parent="CharacterBody3D/Head/Camera3D/Node3D2" groups=["Shortsword"] instance=ExtResource("4_0erlj")]
-transform = Transform3D(0.013715, 0.0989165, 0.00523697, -0.0924089, 0.0146808, -0.0352857, -0.0356722, 1.11759e-09, 0.0934211, 0.455114, -0.332512, -0.971269)
+transform = Transform3D(0.0137155, 0.0989164, 0.00523697, -0.0924089, 0.0146813, -0.0352856, -0.0356722, 1.66148e-07, 0.0934211, 0.455114, -0.332512, -0.971269)
 
 [node name="Node3D3" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Scemitar" parent="CharacterBody3D/Head/Camera3D/Node3D3" groups=["Scemitar"] instance=ExtResource("5_1e58m")]
 transform = Transform3D(-0.0930737, 0, -0.0365689, 0, 0.1, 0, 0.0365689, 0, -0.0930737, 0.429223, -0.619489, -0.953769)
@@ -435,7 +560,7 @@ transform = Transform3D(-0.0930737, 0, -0.0365689, 0, 0.1, 0, 0.0365689, 0, -0.0
 [node name="Node3D4" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
 
 [node name="Crossbow" parent="CharacterBody3D/Head/Camera3D/Node3D4" groups=["Crossbow"] instance=ExtResource("6_yigae")]
-transform = Transform3D(-2, 3.42933e-08, -2.89282e-07, -5.01911e-08, 1.91583, 0.574119, 2.86951e-07, 0.574119, -1.91583, 0.628381, -0.39206, -0.89279)
+transform = Transform3D(-2, 1.69046e-08, -2.59897e-07, -1.17808e-07, 1.72122, 1.01853, 2.32278e-07, 1.01853, -1.72122, 0.628381, -0.39206, -0.709721)
 
 [node name="Node3D5" type="Node3D" parent="CharacterBody3D/Head/Camera3D"]
 

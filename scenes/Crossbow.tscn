@@ -5,3 +5,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="crossbow" parent="." instance=ExtResource("1_k5jjq")]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37826)
+target_position = Vector3(0, 0, 1)

@@ -26,6 +26,10 @@ public partial class playerScript : CharacterBody3D
 	Area3D SS_hitBox;
 	Area3D SC_hitBox;
 	weaponState prevState = weaponState.NONE;
+	bool isBWAnim = false;
+	bool isCBAnim = false;
+	RayCast3D BW_ray;
+	RayCast3D CB_ray;
 	Dictionary<weaponState,string> weaponPickups = new Dictionary<weaponState,string>() {{weaponState.LONGSWORD, "LS"},{weaponState.SHORTSWORD,"SS"},{weaponState.BOW,"BW"},{weaponState.CROSSBOW,"CB"},{weaponState.SCEMITAR, "SC"}};
 	
 	public override void _Ready()
@@ -38,6 +42,7 @@ public partial class playerScript : CharacterBody3D
 		SS_hitBox = GetNode<Area3D>("Head/Camera3D/Node3D2/Shortsword/Shortsword/MeshInstance3D/hitbox");
 		SC_hitBox = GetNode<Area3D>("Head/Camera3D/Node3D3/Scemitar/Scemitar/MeshInstance3D/hitbox");
 		healthDisplay = GetNode<Label>("Head/Control/Label");
+		CB_ray = GetNode<RayCast3D>("Head/Camera3D/Node3D4/Crossbow/RayCast3D");
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D/Longsword"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D2/Shortsword"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D3/Scemitar"));
@@ -146,6 +151,7 @@ public partial class playerScript : CharacterBody3D
 						weapon.Hide();
 					}
 				}
+				animPlayer.Play("CB_idle");
 				break;
 			case weaponState.BOW:
 				foreach(Node3D weapon in weapons)
@@ -206,6 +212,34 @@ public partial class playerScript : CharacterBody3D
 					animPlayer.Play("SS_swing");
 					SC_hitBox.Monitoring = true;
 					scaleValue -= (float)((scaleValue / 100) * 10); 
+					break;
+					
+				case weaponState.CROSSBOW:
+					if(!isCBAnim)
+					{
+						scaleValue -= (float)((scaleValue / 100) * 10); 
+						animPlayer.Play("CB_shoot");
+						isCBAnim = true;
+						var arrow = ResourceLoader.Load<PackedScene>("res://scenes/arrow.tscn");
+						Node3D arrowInstance = arrow.Instantiate<Node3D>();
+						arrowInstance.Position = GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalPosition;
+						arrowInstance.Rotation = new Vector3(GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.X,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Y,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Z);
+						GetParent().GetParent().AddChild(arrowInstance);
+					}
+					break;
+
+				case weaponState.BOW:
+					if(!isBWAnim)
+					{
+						scaleValue -= (float)((scaleValue / 100) * 30); 
+						animPlayer.Play("BW_shoot");
+						isCBAnim = true;
+						var arrow = ResourceLoader.Load<PackedScene>("res://scenes/arrow.tscn");
+						Node3D arrowInstance = arrow.Instantiate<Node3D>();
+						arrowInstance.Position = GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalPosition;
+						arrowInstance.Rotation = new Vector3(GetNode<Node3D>("Head/Camera3D/Node3D5/Bow").GlobalRotation.X,GetNode<Node3D>("Head/Camera3D/Node3D5/Bow").GlobalRotation.Y,GetNode<Node3D>("Head/Camera3D/Node3D5/Bow").GlobalRotation.Z);
+						GetParent().GetParent().AddChild(arrowInstance);
+					}
 					break;
 			}
 		}
@@ -270,6 +304,16 @@ public partial class playerScript : CharacterBody3D
 		{	
 			animPlayer.Play("SC_idle");
 			SC_hitBox.Monitoring = false;
+		}
+		else if((string)anim_name == "CB_shoot")
+		{	
+			animPlayer.Play("CB_idle");
+			isCBAnim = false;
+		}
+		else if((string)anim_name == "BW_shoot")
+		{	
+			animPlayer.Play("BW_idle");
+			isBWAnim = false;
 		}
 	}
 }

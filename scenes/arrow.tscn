@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cussc0c4wsw2s"]
+
+[ext_resource type="Script" path="res://scenes/arrowScript.cs" id="1_6mn2n"]
+[ext_resource type="PackedScene" uid="uid://c4dxuget40cki" path="res://models/arrow.blend" id="1_uec71"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_6mn2n")
+
+[node name="arrow" parent="." instance=ExtResource("1_uec71")]
+transform = Transform3D(0.05, 0, 0, 0, -0.000621323, -0.0499961, 0, 0.0499961, -0.000621323, -0.000329241, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 1)
+collide_with_areas = true
