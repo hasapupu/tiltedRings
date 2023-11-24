@@ -193,30 +193,41 @@ public partial class playerScript : CharacterBody3D
 		//will have to change based on weapon and cd
 		if(Input.IsActionJustPressed("attack"))
 		{
+			LS_hitbox hitScript;
 			GD.Print("attack");
 			switch(state)
 			{
 				case weaponState.LONGSWORD:
 					animPlayer.Play("LS_swing");
 					hitBox.Monitoring = true;
-					scaleValue -= (float)((scaleValue / 100) * 15); 
+					hitScript = hitBox as LS_hitbox;
+					hitScript.damage = 40 * scaleValue;
+					scaleValue -= (float)((scaleValue / 100) * 15);
+					currentHealth += (int)Mathf.Floor(1/scaleValue);
 					break;
 				
 				case weaponState.SHORTSWORD:
 					animPlayer.Play("SC_swing");
 					SS_hitBox.Monitoring = true;
-					scaleValue -= (float)((scaleValue / 100) * 5); 
+					hitScript = SS_hitBox as LS_hitbox;
+					hitScript.damage = 20 * scaleValue;
+					scaleValue -= (float)((scaleValue / 100) * 5);
+					currentHealth += (int)Mathf.Floor(1f/scaleValue);
 					break;
 					
 				case weaponState.SCEMITAR:
 					animPlayer.Play("SS_swing");
 					SC_hitBox.Monitoring = true;
+					hitScript = hitBox as LS_hitbox;
+					hitScript.damage = 30 * scaleValue;
 					scaleValue -= (float)((scaleValue / 100) * 10); 
+					currentHealth += (int)Mathf.Floor(1/scaleValue);
 					break;
 					
 				case weaponState.CROSSBOW:
 					if(!isCBAnim)
 					{
+						currentHealth += (int)Mathf.Floor(1/scaleValue);
 						scaleValue -= (float)((scaleValue / 100) * 10); 
 						animPlayer.Play("CB_shoot");
 						isCBAnim = true;
@@ -224,6 +235,8 @@ public partial class playerScript : CharacterBody3D
 						Node3D arrowInstance = arrow.Instantiate<Node3D>();
 						arrowInstance.Position = GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalPosition;
 						arrowInstance.Rotation = new Vector3(GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.X,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Y,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Z);
+						var instanceScript = arrowInstance as arrowScript;
+						instanceScript.damage = 30 * scaleValue;
 						GetParent().GetParent().AddChild(arrowInstance);
 					}
 					break;

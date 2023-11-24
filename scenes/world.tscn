@@ -15,13 +15,13 @@
 transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 0, 0)
 
 [node name="player" parent="." instance=ExtResource("2_txelx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.16374, 0)
+transform = Transform3D(0.0373588, 0, -0.999302, 0, 1, 0, 0.999302, 0, 0.0373588, 0, 1.16374, 0)
 
 [node name="Node3D2" parent="." instance=ExtResource("3_cefa8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1557, 0)
 
 [node name="enemy" parent="." instance=ExtResource("4_hyt2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0232, 0.801159, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0232, 2.47244, 0)
 
 [node name="Node3D" parent="." instance=ExtResource("5_ebr0q")]
 transform = Transform3D(1, -0.000623922, -0.00052245, 0.000624056, 1, 0.000262812, 0.00052229, -0.00026313, 1, 20.6437, 0, -5.45307)

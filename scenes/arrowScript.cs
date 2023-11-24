@@ -5,6 +5,7 @@ public partial class arrowScript : Node3D
 {
 	Node3D arrow;
 	RayCast3D ray;
+	public float damage = 0f;
 	
 	public override void _Ready()
 	{
@@ -24,6 +25,8 @@ public partial class arrowScript : Node3D
 			var temp = ray.GetCollider() as Node3D;
 			if(temp.IsInGroup("enemy"))
 			{
+				var enemy = temp as enemyHitboxBaseClass;
+				enemy.hp -= damage;
 				GD.Print("Hit registered");
 			}
 			arrow.Visible = false;

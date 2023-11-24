@@ -1,4 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c77iatgtftmj6"]
+[gd_scene load_steps=7 format=3 uid="uid://c77iatgtftmj6"]
+
+[ext_resource type="Script" path="res://scenes/enemyHitboxBaseClass.cs" id="1_htmku"]
+[ext_resource type="Script" path="res://scenes/enemyMovementBaseClas.cs" id="2_256ls"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_boxcm"]
+size = Vector3(0.65157, 0.904767, 0.383319)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6th7"]
 albedo_color = Color(1, 0, 0.105882, 1)
@@ -11,11 +17,18 @@ points = PackedVector3Array(0.457871, 0.198079, 0.0157824, -0.48874, -0.0916874,
 
 [node name="enemy" type="Node3D" groups=["enemy"]]
 
-[node name="Area3D" type="Area3D" parent="." groups=["enemy"]]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+script = ExtResource("2_256ls")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_boxcm")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("1_htmku")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Area3D"]
 mesh = SubResource("SphereMesh_r7u8c")
-skeleton = NodePath("../..")
+skeleton = NodePath("../../..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
 shape = SubResource("ConvexPolygonShape3D_gbs6p")
