@@ -1,36 +1,143 @@
-[gd_scene load_steps=9 format=3 uid="uid://dvsq27082qnc5"]
+[gd_scene load_steps=10 format=3 uid="uid://dvsq27082qnc5"]
 
 [ext_resource type="PackedScene" uid="uid://dbtb8upi3u4ln" path="res://scenes/map.tscn" id="1_3ud17"]
+[ext_resource type="Script" path="res://world.cs" id="1_lc40w"]
 [ext_resource type="PackedScene" uid="uid://dufrd1x67bvfh" path="res://scenes/player.tscn" id="2_txelx"]
-[ext_resource type="PackedScene" uid="uid://c6h626y4wu1ul" path="res://scenes/LS_pickUp.tscn" id="3_cefa8"]
 [ext_resource type="PackedScene" uid="uid://c77iatgtftmj6" path="res://scenes/testEnemy.tscn" id="4_hyt2g"]
-[ext_resource type="PackedScene" uid="uid://c08xp6u28g0xg" path="res://scenes/SS_pickUp.tscn" id="5_ebr0q"]
 [ext_resource type="PackedScene" uid="uid://16rawilww342" path="res://scenes/SC_pickUp.tscn" id="6_35oi5"]
-[ext_resource type="PackedScene" uid="uid://bnhm8344v1gdm" path="res://scenes/CB_pickUp.tscn" id="7_83in5"]
-[ext_resource type="PackedScene" uid="uid://bcgpfc6jxu5lb" path="res://scenes/BW_pickUp.tscn" id="8_n55op"]
+[ext_resource type="PackedScene" uid="uid://pw7jb8wadtc8" path="res://scenes/letroll.tscn" id="9_42pq2"]
+[ext_resource type="PackedScene" uid="uid://drje6ghvdh07q" path="res://p.tscn" id="10_l66j8"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_0po7b"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bfvxi"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
 
 [node name="world" type="Node3D"]
-
-[node name="Map" parent="." instance=ExtResource("1_3ud17")]
-transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 0, 0)
+script = ExtResource("1_lc40w")
 
 [node name="player" parent="." instance=ExtResource("2_txelx")]
-transform = Transform3D(0.0373588, 0, -0.999302, 0, 1, 0, 0.999302, 0, 0.0373588, 0, 1.16374, 0)
+transform = Transform3D(0.0373588, 0, -0.999302, 0, 1, 0, 0.999302, 0, 0.0373588, -0.168056, 3.3998, -18.7032)
 
-[node name="Node3D2" parent="." instance=ExtResource("3_cefa8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.1557, 0)
+[node name="Node3D" parent="player/CharacterBody3D/Head/Camera3D" index="0"]
+transform = Transform3D(0.291224, 0, 0.956655, 0, 1, 0, -0.956655, 0, 0.291224, 0.0115286, 4.76837e-07, 0.000725269)
 
-[node name="enemy" parent="." instance=ExtResource("4_hyt2g")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0232, 2.47244, 0)
+[node name="Longsword" parent="player/CharacterBody3D/Head/Camera3D/Node3D" index="0"]
+transform = Transform3D(0.0260064, 0.0947423, 0.0186425, -0.0770024, 0.0319981, -0.0551974, -0.0582605, -3.23355e-07, 0.0812755, 0.871278, -0.538258, -0.900322)
 
-[node name="Node3D" parent="." instance=ExtResource("5_ebr0q")]
-transform = Transform3D(1, -0.000623922, -0.00052245, 0.000624056, 1, 0.000262812, 0.00052229, -0.00026313, 1, 20.6437, 0, -5.45307)
+[node name="Shortsword" parent="player/CharacterBody3D/Head/Camera3D/Node3D2" index="0"]
+transform = Transform3D(0.0137155, 0.0989164, 0.00523697, -0.0924089, 0.0146813, -0.0352856, -0.0356722, 1.66148e-07, 0.0934211, 0.455114, -0.332512, -0.971269)
+
+[node name="Scemitar" parent="player/CharacterBody3D/Head/Camera3D/Node3D3" index="0"]
+transform = Transform3D(-0.0930737, 0, -0.0365689, 0, 0.1, 0, 0.0365689, 0, -0.0930737, 0.429223, -0.619489, -0.953769)
+
+[node name="Crossbow" parent="player/CharacterBody3D/Head/Camera3D/Node3D4" index="0"]
+transform = Transform3D(-2, 2.44528e-06, -4.3636e-06, -1.17808e-07, 1.72122, 1.01853, 5.00065e-06, 1.01853, -1.72122, 0.628381, -0.39206, -0.709721)
+
+[node name="Node3D6" parent="." instance=ExtResource("9_42pq2")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8507, 0.537196, 2.55529)
+
+[node name="Map" parent="." instance=ExtResource("1_3ud17")]
+transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 1.50675, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(72.2779, 0, 0, 0, 62.7952, 0, 0, 0, 1, 10.9878, 10, -28.0773)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="Map2" parent="." instance=ExtResource("1_3ud17")]
+transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 0, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(47.0586, 0, 0.75901, 0, 62.7952, 0, -54.8596, 0, 0.651079, -8.39554, 10, -19.96)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-10.9752, 0, 0.988404, 0, 62.7952, 0, -71.4397, 0, -0.151847, -14.9007, 12.5943, 14.2824)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D3/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(-35.1854, 0, -0.873509, 0, 62.7952, 0, 63.1354, 0, -0.486808, 29.6743, 10, 26.0488)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D4/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
+transform = Transform3D(-42.5458, 3.36996, 0.80661, 4.11559, 62.6739, -0.02485, -58.2838, 1.96559, -0.590561, 41.5498, 9.99999, -2.04629)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D5/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="."]
+transform = Transform3D(45.4908, -1.04013, 0.776914, 4.11559, 62.6739, -0.02485, -56.0155, 3.7601, 0.629115, 35.7369, 9.99999, 17.0284)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D6"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D6/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="."]
+transform = Transform3D(-70.6198, 0, 0.212962, 0, 62.7952, 0, -15.3925, 0, -0.97706, 4.90348, 10, 29.0382)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D7"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D7/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="."]
+transform = Transform3D(-72.1526, 0, -0.0588534, 0, 62.7952, 0, 4.25379, 0, -0.998266, 4.90348, 10, -26.8977)
+visible = false
+mesh = SubResource("BoxMesh_0po7b")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D8"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D8/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_bfvxi")
+
+[node name="Node3D7" parent="." instance=ExtResource("10_l66j8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.43556, 0)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.119004, 2.56592, 0.104567)
+
+[node name="Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97354, 2.363, -29.6316)
 
 [node name="Node3D3" parent="." instance=ExtResource("6_35oi5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.1895, 0, 4.02828)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51771, 0)
 
-[node name="Node3D4" parent="." instance=ExtResource("7_83in5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9728, 0, 8.67879)
+[node name="enemy" parent="." instance=ExtResource("4_hyt2g")]
 
-[node name="Node3D5" parent="." instance=ExtResource("8_n55op")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.9652, 0.525784, -3.16075)
+[editable path="player"]
+[editable path="Node3D6"]
+[editable path="Node3D3"]
+[editable path="enemy"]

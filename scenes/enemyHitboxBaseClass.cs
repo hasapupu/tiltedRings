@@ -10,7 +10,10 @@ public partial class enemyHitboxBaseClass : Area3D
 	{
 		if(hp <= 0f)
 		{
+			var zaWarudo = GetParent().GetParent().GetParent() as world;
+			zaWarudo.onEnemyDeath();
 			GetParent().GetParent().QueueFree();
+			
 		}
 	}
 }

@@ -30,7 +30,7 @@ public partial class playerScript : CharacterBody3D
 	bool isCBAnim = false;
 	RayCast3D BW_ray;
 	RayCast3D CB_ray;
-	Dictionary<weaponState,string> weaponPickups = new Dictionary<weaponState,string>() {{weaponState.LONGSWORD, "LS"},{weaponState.SHORTSWORD,"SS"},{weaponState.BOW,"BW"},{weaponState.CROSSBOW,"CB"},{weaponState.SCEMITAR, "SC"}};
+	public Dictionary<weaponState,string> weaponPickups = new Dictionary<weaponState,string>() {{weaponState.LONGSWORD, "LS"},{weaponState.SHORTSWORD,"SS"},{weaponState.CROSSBOW,"CB"},{weaponState.SCEMITAR, "SC"}};
 	
 	public override void _Ready()
 	{
@@ -47,7 +47,6 @@ public partial class playerScript : CharacterBody3D
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D2/Shortsword"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D3/Scemitar"));
 		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow"));
-		weapons.Add(GetNode<Node3D>("Head/Camera3D/Node3D5/Bow"));
 		animPlayer = GetNode<AnimationPlayer>("Head/AnimationPlayer");
 		setWeaponState(weaponState.NONE);
 	}
@@ -171,7 +170,7 @@ public partial class playerScript : CharacterBody3D
 				}
 				break;
 		}
-		if(prevState != weaponState.NONE)
+		/*if(prevState != weaponState.NONE)
 		{
 			var pickupScene = ResourceLoader.Load<PackedScene>("res://scenes/" + weaponPickups[prevState] + "_pickUp.tscn");
 			Node3D pickupInstance = pickupScene.Instantiate<Node3D>();
@@ -179,7 +178,7 @@ public partial class playerScript : CharacterBody3D
 			pickupInstance.Position = new Vector3(GlobalPosition.X + Math.Abs(head.Rotation.Y),0.1f,GlobalPosition.Z + (head.Rotation.Y));
 			GD.Print(head.Rotation);
 		}
-		GD.Print(state);
+		GD.Print(state);*/
 	}
 	
 	public override void _Process(double delta)
