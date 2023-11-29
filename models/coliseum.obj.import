@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c5wj37ubxu2lx"
+path="res://.godot/imported/coliseum.obj-00a13ed94bae402bf76b92f505b24b5b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/coliseum.obj-00a13ed94bae402bf76b92f505b24b5b.mesh"]
+
+source_file="res://models/coliseum.obj"
+dest_files=["res://.godot/imported/coliseum.obj-00a13ed94bae402bf76b92f505b24b5b.mesh", "res://.godot/imported/coliseum.obj-00a13ed94bae402bf76b92f505b24b5b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

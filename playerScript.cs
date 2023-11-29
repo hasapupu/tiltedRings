@@ -232,7 +232,7 @@ public partial class playerScript : CharacterBody3D
 						isCBAnim = true;
 						var arrow = ResourceLoader.Load<PackedScene>("res://scenes/arrow.tscn");
 						Node3D arrowInstance = arrow.Instantiate<Node3D>();
-						arrowInstance.Position = GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalPosition;
+						arrowInstance.Position = GetNode<Node3D>("Head/Camera3D").GlobalPosition - new Vector3(1,0,0);
 						arrowInstance.Rotation = new Vector3(GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.X,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Y,GetNode<Node3D>("Head/Camera3D/Node3D4/Crossbow").GlobalRotation.Z);
 						var instanceScript = arrowInstance as arrowScript;
 						instanceScript.damage = 30 * scaleValue;
