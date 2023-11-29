@@ -14,7 +14,6 @@ points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546703, 0, -0.64656)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Longsword"]
-transform = Transform3D(-0.110974, 0, 0, 0, 17.9181, 0, 0, 0, 1, 0, 6.04917, 0)
 visible = false
 mesh = SubResource("BoxMesh_yvvvn")
 

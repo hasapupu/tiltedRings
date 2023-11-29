@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://0r2cjxjcc6vc"]
+[gd_scene load_steps=3 format=3 uid="uid://0r2cjxjcc6vc"]
+
+[ext_resource type="Script" path="res://graphics/crossHairPosition.cs" id="1_sgq10"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nkkbc"]
 
@@ -8,9 +10,9 @@
 position = Vector2(597, 321)
 scale = Vector2(5.88103, -16.9516)
 mesh = SubResource("BoxMesh_nkkbc")
+script = ExtResource("1_sgq10")
 
-[node name="MeshInstance2D2" type="MeshInstance2D" parent="."]
-position = Vector2(597, 321)
-rotation = 1.5708
-scale = Vector2(5.88103, -16.9516)
+[node name="MeshInstance2D2" type="MeshInstance2D" parent="MeshInstance2D"]
+rotation = -1.57081
+scale = Vector2(0.346931, 2.88242)
 mesh = SubResource("BoxMesh_nkkbc")

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn0sdo7bcbmip"]
+
+[ext_resource type="Texture2D" uid="uid://bbor5q6spinn" path="res://graphics/logo_TR.png" id="1_ygshl"]
+[ext_resource type="Script" path="res://scenes/loadButton.cs" id="2_t00f7"]
+[ext_resource type="AudioStream" uid="uid://cu3nl2edhn7y2" path="res://audio/gitjam_tut_v1.wav" id="3_d2ap6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkwm3"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xoger"]
+specular_color = Color(0.808594, 0.984375, 0.996094, 1)
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+position = Vector2(574.25, 316.75)
+scale = Vector2(1149.5, 634.5)
+mesh = SubResource("BoxMesh_jkwm3")
+texture = SubResource("CanvasTexture_xoger")
+
+[node name="LogoTr" type="Sprite2D" parent="MeshInstance2D"]
+z_index = 1
+position = Vector2(-0.0262451, -0.289612)
+scale = Vector2(0.000267073, 0.000472813)
+texture = ExtResource("1_ygshl")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 330.0
+offset_top = 299.0
+offset_right = 478.0
+offset_bottom = 330.0
+scale = Vector2(3, 3)
+text = "Start
+"
+script = ExtResource("2_t00f7")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Button"]
+stream = ExtResource("3_d2ap6")
+autoplay = true
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

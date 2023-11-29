@@ -584,4 +584,6 @@ libraries = {
 "": SubResource("AnimationLibrary_db8l3")
 }
 
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
 [connection signal="animation_finished" from="CharacterBody3D/Head/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]

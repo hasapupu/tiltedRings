@@ -1,11 +1,43 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjdrbrtxumv0n"]
+[gd_scene load_steps=7 format=3 uid="uid://cjdrbrtxumv0n"]
 
 [ext_resource type="PackedScene" uid="uid://i7u6oeqha4u7" path="res://models/crossbow.blend" id="1_k5jjq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ewgko"]
+albedo_color = Color(0.364706, 0.152941, 0.027451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pomr6"]
+albedo_color = Color(0.364706, 0.152941, 0.027451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lkvss"]
+albedo_color = Color(0.364706, 0.152941, 0.027451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gvyvv"]
+albedo_color = Color(0.364706, 0.152941, 0.027451, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8yeio"]
+albedo_color = Color(0.486275, 0.262745, 0.0705882, 1)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="crossbow" parent="." instance=ExtResource("1_k5jjq")]
 
+[node name="body" parent="crossbow" index="0"]
+material_override = SubResource("StandardMaterial3D_ewgko")
+
+[node name="nut" parent="crossbow" index="1"]
+material_override = SubResource("StandardMaterial3D_pomr6")
+
+[node name="trigger" parent="crossbow" index="2"]
+material_override = SubResource("StandardMaterial3D_lkvss")
+
+[node name="prod" parent="crossbow" index="3"]
+material_override = SubResource("StandardMaterial3D_gvyvv")
+
+[node name="bolt" parent="crossbow" index="5"]
+material_override = SubResource("StandardMaterial3D_8yeio")
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37826)
 target_position = Vector3(0, 0, 1)
+
+[editable path="crossbow"]

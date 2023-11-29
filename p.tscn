@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://drje6ghvdh07q"]
+[gd_scene load_steps=6 format=3 uid="uid://drje6ghvdh07q"]
+
+[ext_resource type="AudioStream" uid="uid://dqrn1ywlnod6i" path="res://audio/music_main_battle.wav" id="1_jojd8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wajrt"]
 
@@ -46,3 +48,7 @@ skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="column_001/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_ofxfd")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_jojd8")
+autoplay = true

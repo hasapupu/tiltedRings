@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1ajsrhcdkolt"]
+[gd_scene load_steps=3 format=3 uid="uid://d1ajsrhcdkolt"]
+
+[ext_resource type="Script" path="res://scenes/health.cs" id="1_s6nat"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ox6jg"]
 font_size = 70
@@ -10,6 +12,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_s6nat")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0

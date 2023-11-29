@@ -41,8 +41,21 @@ public partial class world : Node3D
 		}
 	}
 	
+	public override void _PhysicsProcess(double delta)
+	{
+		if(player.currentHealth < 0)
+		{
+			GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("res://scenes/loadingScene.tscn").Instantiate());
+			QueueFree();
+		}
+
+		
+	}
+	
 	public override void _Ready()
 	{
+		DisplayServer.WindowSetMode(DisplayServer.WindowMode.Fullscreen);
+		Vector2 windowSize = DisplayServer.WindowGetSize();
 		weaponSpot = GetNode<Node3D>("Node3D");
 		player = GetNode<playerScript>("player/CharacterBody3D");
 	}
