@@ -1,9 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dvsq27082qnc5"]
+[gd_scene load_steps=11 format=3 uid="uid://dvsq27082qnc5"]
 
 [ext_resource type="PackedScene" uid="uid://dbtb8upi3u4ln" path="res://scenes/map.tscn" id="1_3ud17"]
 [ext_resource type="Script" path="res://world.cs" id="1_lc40w"]
 [ext_resource type="PackedScene" uid="uid://dufrd1x67bvfh" path="res://scenes/player.tscn" id="2_txelx"]
-[ext_resource type="PackedScene" uid="uid://c77iatgtftmj6" path="res://scenes/testEnemy.tscn" id="4_hyt2g"]
 [ext_resource type="PackedScene" uid="uid://16rawilww342" path="res://scenes/SC_pickUp.tscn" id="6_35oi5"]
 [ext_resource type="ArrayMesh" uid="uid://c5wj37ubxu2lx" path="res://models/coliseum.obj" id="8_3a08b"]
 [ext_resource type="PackedScene" uid="uid://pw7jb8wadtc8" path="res://scenes/letroll.tscn" id="9_42pq2"]
@@ -38,7 +37,7 @@ transform = Transform3D(-0.0930737, 0, -0.0365689, 0, 0.1, 0, 0.0365689, 0, -0.0
 transform = Transform3D(-2, 2.44528e-06, -4.3636e-06, -1.17808e-07, 1.72122, 1.01853, 5.00065e-06, 1.01853, -1.72122, 0.628381, -0.39206, -0.709721)
 
 [node name="Node3D6" parent="." instance=ExtResource("9_42pq2")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8507, 0.537196, 2.55529)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.8503, 0.546721, 2.55436)
 
 [node name="Map" parent="." instance=ExtResource("1_3ud17")]
 transform = Transform3D(2.19001, 0, 0, 0, 1, 0, 0, 0, 2.75995, 0, 1.50675, 0)
@@ -138,8 +137,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.97354, 2.363, -29.6316)
 [node name="Node3D3" parent="." instance=ExtResource("6_35oi5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.51771, 0)
 
-[node name="enemy" parent="." instance=ExtResource("4_hyt2g")]
-
 [node name="Coliseum" type="MeshInstance3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 10.851, 0.537, 2.555)
 material_override = SubResource("StandardMaterial3D_cutyd")
@@ -148,4 +145,3 @@ mesh = ExtResource("8_3a08b")
 [editable path="player"]
 [editable path="Node3D6"]
 [editable path="Node3D3"]
-[editable path="enemy"]

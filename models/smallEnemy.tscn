@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://b4o1svwbyhg7i"]
+
+[ext_resource type="Script" path="res://smallEnemyMovementScript.cs" id="1_pym1r"]
+[ext_resource type="Script" path="res://scenes/enemyHitboxBaseClass.cs" id="3_3nlu5"]
+[ext_resource type="PackedScene" uid="uid://c5obg0s4lcxab" path="res://ifhi_smallEnemy.tscn" id="3_eiwtp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7nk3"]
+size = Vector3(0.65157, 1.59092, 0.633028)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6th7"]
+albedo_color = Color(1, 0, 0.105882, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_2at80"]
+material = SubResource("StandardMaterial3D_a6th7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4i1mq"]
+size = Vector3(1, 1.55383, 1.41375)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.575422, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["enemy"]]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+script = ExtResource("1_pym1r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968415, 0)
+shape = SubResource("BoxShape3D_w7nk3")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("3_3nlu5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Area3D"]
+visible = false
+mesh = SubResource("SphereMesh_2at80")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06278, 0)
+shape = SubResource("BoxShape3D_4i1mq")
+
+[node name="Node3D" parent="CharacterBody3D" instance=ExtResource("3_eiwtp")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="CharacterBody3D/Node3D/metarig" index="0"]
+bones/5/rotation = Quaternion(-0.0948575, -5.35321e-14, -2.26158e-08, 0.995491)
+
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="CharacterBody3D/Node3D/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]
+
+[editable path="CharacterBody3D/Node3D"]

@@ -15,9 +15,17 @@ public partial class world : Node3D
 	{
 		for(int i = 0; i < stageNumber; i++)
 		{
-			var enemyScene = ResourceLoader.Load<PackedScene>("res://scenes/testEnemy.tscn");
+			PackedScene enemyScene;
+			if(rnd.Next(2) == 0)
+			{
+				enemyScene = ResourceLoader.Load<PackedScene>("res://models/smallEnemy.tscn");
+			}
+			else
+			{
+				enemyScene = ResourceLoader.Load<PackedScene>("res://models/bigEnemy.tscn");
+			}
 			Node3D enemyInstance = enemyScene.Instantiate<Node3D>();
-			enemyInstance.Position = new Vector3((float)rnd.Next(-11,20),2.4f,(float)rnd.Next(-15,17));
+			enemyInstance.Position = new Vector3((float)rnd.Next(-11,20),2,(float)rnd.Next(-15,17));
 			AddChild(enemyInstance);
 			enemyNum++;
 		}
@@ -43,7 +51,7 @@ public partial class world : Node3D
 	
 	public override void _PhysicsProcess(double delta)
 	{
-		if(player.currentHealth < 0)
+		if(player.currentHealth <= 0)
 		{
 			GetTree().Root.AddChild(ResourceLoader.Load<PackedScene>("res://scenes/loadingScene.tscn").Instantiate());
 			QueueFree();

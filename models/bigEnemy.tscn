@@ -1,0 +1,73 @@
+[gd_scene load_steps=8 format=3 uid="uid://2o7dg7qomkdn"]
+
+[ext_resource type="PackedScene" uid="uid://dkse8wtyjcre0" path="res://models/thicc_charger.blend" id="1_bn5ma"]
+[ext_resource type="Script" path="res://smallEnemyMovementScript.cs" id="2_0y47r"]
+[ext_resource type="Script" path="res://scenes/enemyHitboxBaseClass.cs" id="3_bassj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_24ard"]
+size = Vector3(0.65157, 1.59092, 0.633028)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a6th7"]
+albedo_color = Color(1, 0, 0.105882, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_uc14y"]
+material = SubResource("StandardMaterial3D_a6th7")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1u3n"]
+size = Vector3(1, 1.55383, 1.41375)
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 2.73306, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["enemy"]]
+axis_lock_linear_y = true
+axis_lock_angular_y = true
+script = ExtResource("2_0y47r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.968415, 0)
+shape = SubResource("BoxShape3D_24ard")
+
+[node name="Area3D" type="Area3D" parent="CharacterBody3D" groups=["enemy"]]
+script = ExtResource("3_bassj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D/Area3D"]
+visible = false
+mesh = SubResource("SphereMesh_uc14y")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06278, 0)
+shape = SubResource("BoxShape3D_m1u3n")
+
+[node name="Node3D" parent="CharacterBody3D" instance=ExtResource("1_bn5ma")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -1.42728, 0, 0)
+
+[node name="metarig_001" parent="CharacterBody3D/Node3D" index="0"]
+transform = Transform3D(-9.24156, 0, -8.07923e-07, 0, 11.1156, 0, 8.07923e-07, 0, -9.24156, 13.6032, -2.72725, 0)
+
+[node name="Skeleton3D" parent="CharacterBody3D/Node3D/metarig_001" index="0"]
+bones/0/position = Vector3(0.0320846, 0.944574, -0.0400947)
+bones/1/rotation = Quaternion(0.0767985, -0.0417244, 0.00194467, 0.996171)
+bones/2/rotation = Quaternion(-0.197389, 0.00634355, -0.0204916, 0.980091)
+bones/6/rotation = Quaternion(-0.753484, 0.0222562, -0.0593054, 0.654408)
+bones/7/rotation = Quaternion(-0.499786, 0.473853, 0.502797, 0.522372)
+bones/8/rotation = Quaternion(-0.536663, -0.592101, 0.465071, 0.380944)
+bones/9/rotation = Quaternion(0.722508, -0.00259596, -0.0107712, 0.691274)
+bones/11/rotation = Quaternion(-0.597208, -0.291437, -0.348361, 0.6611)
+bones/12/rotation = Quaternion(-0.459766, 0.633239, -0.480186, 0.39629)
+bones/13/rotation = Quaternion(0.6875, 0.0686102, -0.0207557, 0.722638)
+bones/16/rotation = Quaternion(0.983501, -0.0512341, 0.128548, 0.116515)
+bones/17/rotation = Quaternion(0.758992, -0.170668, 0.0934506, 0.621346)
+bones/18/rotation = Quaternion(-0.592754, 0.0651644, -0.0343238, 0.802009)
+bones/20/rotation = Quaternion(0.908506, -0.0160811, 0.0736984, 0.411008)
+bones/21/rotation = Quaternion(0.289887, -0.0514181, -0.000933961, 0.955678)
+bones/22/rotation = Quaternion(-0.707507, -0.0561026, 0.0163475, 0.704286)
+
+[node name="AnimationPlayer" parent="CharacterBody3D/Node3D" index="1"]
+autoplay = "charge2"
+
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
+[connection signal="animation_finished" from="CharacterBody3D/Node3D/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]
+
+[editable path="CharacterBody3D/Node3D"]

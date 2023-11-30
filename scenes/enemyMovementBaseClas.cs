@@ -12,11 +12,19 @@ public partial class enemyMovementBaseClas : CharacterBody3D
 	{
 		player = GetParent().GetParent().GetNode<Node3D>("player/CharacterBody3D");
 		GD.Print(player);
+		
+	}
+	
+	public virtual void inheritedBody()
+	{
+		
 	}
 	
 	public override void _PhysicsProcess(double delta)
 	{
+		inheritedBody();
 		Vector3 targetDirection = (player.GlobalTransform.Origin - GlobalTransform.Origin).Normalized();
+		GD.Print(((player.GlobalTransform.Origin - GlobalTransform.Origin).Normalized()));
 		if(!isHit)
 			Velocity = new Vector3(targetDirection.X * speed, Velocity.Y,targetDirection.Z * speed);
 		
@@ -26,6 +34,7 @@ public partial class enemyMovementBaseClas : CharacterBody3D
 		}
 		
 		GD.Print();
+		LookAt(player.GlobalTransform.Origin, new Vector3(0,1,0));
 		MoveAndSlide();
 	}
 }

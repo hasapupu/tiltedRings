@@ -328,7 +328,15 @@ public partial class playerScript : CharacterBody3D
 			isBWAnim = false;
 		}
 	}
+	
+
+	private void _on_area_3d_body_entered(Node3D body)
+	{
+		if(body.IsInGroup("enemy"));
+	}
 }
+
+
 
 
 

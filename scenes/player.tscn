@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dufrd1x67bvfh"]
+[gd_scene load_steps=26 format=3 uid="uid://dufrd1x67bvfh"]
 
 [ext_resource type="Script" path="res://playerScript.cs" id="1_jjhhm"]
 [ext_resource type="PackedScene" uid="uid://dcidmvusah8uf" path="res://scenes/scaleUI.tscn" id="2_d3q2v"]
@@ -525,9 +525,11 @@ _data = {
 "SS_swing": SubResource("Animation_qkabg")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_rwgvx"]
+
 [node name="player" type="Node3D" groups=["player"]]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." groups=["player"]]
 script = ExtResource("1_jjhhm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
@@ -584,6 +586,12 @@ libraries = {
 "": SubResource("AnimationLibrary_db8l3")
 }
 
+[node name="Area3D" type="Area3D" parent="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D/Area3D"]
+shape = SubResource("BoxShape3D_rwgvx")
+
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
 
 [connection signal="animation_finished" from="CharacterBody3D/Head/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
