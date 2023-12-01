@@ -39,9 +39,14 @@ public partial class smallEnemyMovementScript : enemyMovementBaseClas
 		{
 			anim.Play("charge2");
 		}
+		if((string)anim_name == "runningAnime")
+		{
+			anim.Play("runningAnim");
+		}
 		if((string)anim_name == "charge")
 		{
 			anim.Play("charge2");
+			anim.Play("runningAnim");
 			isDiving = false;
 		}
 		GD.Print("EggNog");

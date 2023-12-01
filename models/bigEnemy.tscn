@@ -50,6 +50,8 @@ transform = Transform3D(-9.24156, 0, -8.07923e-07, 0, 11.1156, 0, 8.07923e-07, 0
 bones/0/position = Vector3(0.0320846, 0.944574, -0.0400947)
 bones/1/rotation = Quaternion(0.0767985, -0.0417244, 0.00194467, 0.996171)
 bones/2/rotation = Quaternion(-0.197389, 0.00634355, -0.0204916, 0.980091)
+bones/3/rotation = Quaternion(0.00162715, -1.17994e-07, 1.9595e-10, 0.999999)
+bones/4/rotation = Quaternion(0.201738, 1.20568e-07, 2.00497e-08, 0.97944)
 bones/6/rotation = Quaternion(-0.753484, 0.0222562, -0.0593054, 0.654408)
 bones/7/rotation = Quaternion(-0.499786, 0.473853, 0.502797, 0.522372)
 bones/8/rotation = Quaternion(-0.536663, -0.592101, 0.465071, 0.380944)
@@ -65,7 +67,7 @@ bones/21/rotation = Quaternion(0.289887, -0.0514181, -0.000933961, 0.955678)
 bones/22/rotation = Quaternion(-0.707507, -0.0561026, 0.0163475, 0.704286)
 
 [node name="AnimationPlayer" parent="CharacterBody3D/Node3D" index="1"]
-autoplay = "charge2"
+autoplay = "runningAnim"
 
 [connection signal="body_entered" from="CharacterBody3D/Area3D" to="CharacterBody3D" method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="CharacterBody3D/Node3D/AnimationPlayer" to="CharacterBody3D" method="_on_animation_player_animation_finished"]
